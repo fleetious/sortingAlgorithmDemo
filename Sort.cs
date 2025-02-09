@@ -72,24 +72,21 @@ public class Sort
 
     public static int[] InsertionSort(int[] array)
     {
-        int allSortedBeforeIndex = 1;
         bool hasSwapOccurred = true;
 
-        while(hasSwapOccurred)
+        for(int i = 1; i < array.Length; i++)
         {
             hasSwapOccurred = false;
-
-            for(int i = allSortedBeforeIndex - 1; i > 0; i--)
+            for(int j = i; j > 0; j--)
             {
-                if (array[i] > array[i + 1])
-                {
-                    
-
-                    hasSwapOccurred = true;
-                }
+                if(array[j] > array[j - 1]) continue; // greater than sign = least to greatest sort, and vice versa
+                
+                int temp = array[j];
+                array[j] = array[j - 1];
+                array[j - 1] = temp;
+                
+                hasSwapOccurred = true;
             }
-
-            allSortedBeforeIndex--;
         }
 
         return array;
